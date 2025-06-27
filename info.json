@@ -1,0 +1,10 @@
+{
+	"name": "less-science-packs",
+	"version": "0.0.1",
+	"title": "Less Science Packs",
+	"author": "Chesapeake [moth.monster]",
+	"factorio_version": "2.0",
+	"dependencies": ["base >= 2.0"],
+	"description": "Always thought there were just too many of those pesky things, really.",
+	"contact": "hello@moth.monster"
+}

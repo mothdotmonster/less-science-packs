@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+  Features:
+    - Technologies and recipes now use separate scaling factors, which can be configured separately.
+  Bugfixes:
+    - Scaling factor is now capped to prevent crashing on startup.
+---------------------------------------------------------------------------------------------------
 Version: 0.0.1
   Features:
     - Initial release.

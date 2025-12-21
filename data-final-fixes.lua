@@ -40,8 +40,9 @@ tier = {
 	["cryogenic-science-pack"] = 6,
 	["promethium-science-pack"] = 7
 }
--- scaling factor, how fast the numbers get out of control :)
-scaleFactor = settings.startup["less-science-packs-scaling"].value
+-- scaling factors, how fast the numbers get out of control :)
+researchScaleFactor = settings.startup["less-science-packs-research-scaling"].value
+recipeScaleFactor = settings.startup["less-science-packs-recipe-scaling"].value
 
 -- monkeypatch technologies
 for _, tech in pairs(data.raw["technology"]) do
@@ -50,9 +51,14 @@ for _, tech in pairs(data.raw["technology"]) do
 		newUnit = {time = oldUnit.time, count = oldUnit.count, count_formula = oldUnit.count_formula, ingredients = {}}
 		amount = 0
 		for _, ingredient in pairs(oldUnit.ingredients) do -- loop over each original science pack type and calculate new amount
-			amount = scaleFactor ^ tier[ingredient[1]] * ingredient[2] + amount
+			amount = researchScaleFactor ^ tier[ingredient[1]] * ingredient[2] + amount
 		end
-		table.insert(newUnit.ingredients, {"automation-science-pack", amount})
+		table.insert(newUnit.ingredients, {"automation-science-pack", 1})
+		if (oldUnit.count ~= nil) then -- modify counts based off amount
+			newUnit.count = oldUnit.count * amount
+		elseif (oldUnit.count_formula ~= nil) then
+			newUnit.count_formula = "(" .. oldUnit.count_formula .. ")*" .. amount
+		end
 		tech.unit = newUnit -- put new values in place
 	end
 end
@@ -62,7 +68,7 @@ for _, recipe in pairs(data.raw["recipe"]) do
 	if (recipe.results ~= nil) then
 		for _, item in pairs(recipe.results) do
 			if contains(sciencePacks, item.name) then
-				item.amount = item.amount * scaleFactor ^ tier[item.name]
+				item.amount = item.amount * recipeScaleFactor ^ tier[item.name]
 				item.name = "automation-science-pack"
 				recipe.main_product = "automation-science-pack"
 				if (recipe.category ~= "recycling") then -- removes any explicitly set icons on non-recycling recipes

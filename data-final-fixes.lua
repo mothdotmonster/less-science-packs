@@ -51,7 +51,11 @@ for _, tech in pairs(data.raw["technology"]) do
 		newUnit = {time = oldUnit.time, count = oldUnit.count, count_formula = oldUnit.count_formula, ingredients = {}}
 		amount = 0
 		for _, ingredient in pairs(oldUnit.ingredients) do -- loop over each original science pack type and calculate new amount
-			amount = researchScaleFactor ^ tier[ingredient[1]] * ingredient[2] + amount
+			if (tier[ingredient[1]] ~= nil) then
+				amount = researchScaleFactor ^ tier[ingredient[1]] * ingredient[2] + amount
+			else
+				error('Unknown science pack: "' .. ingredient[1] .. '"\nPlease disable any other mods that add new science packs!', 2) -- handle errors kindly, should make adding support for other mods easier
+			end
 		end
 		table.insert(newUnit.ingredients, {"automation-science-pack", 1})
 		if (oldUnit.count ~= nil) then -- modify counts based off amount

@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+  Bugfixes:
+    - Improved error handling if another incompatible mod is installed.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
   Features:
     - Technologies and recipes now use separate scaling factors, which can be configured separately.

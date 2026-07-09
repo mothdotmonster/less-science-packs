@@ -1,9 +1,9 @@
 {
 	"name": "less-science-packs",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"title": "Less Science Packs",
 	"author": "Chesapeake [moth.monster]",
-	"factorio_version": "2.0",
+	"factorio_version": "2.1",
 	"dependencies": ["base >= 2.0", "?space-age", "!Moshine", "!corrundum", "!maraxsis", "!planet-muluna", "!secretas", "!linox", "!lignumis", "!Cerys-Moon-of-Fulgora", "!rubia", "!alchemy-khemia", "!Igrys", "!Paracelsin", "!planetaris-arig", "!skewer_planet_vesta"],
 	"description": "Always thought there were just too many of those pesky things, really.",
 	"contact": "hello@moth.monster"

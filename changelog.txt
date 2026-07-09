@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+  Compatibility:
+    - Factorio 2.1 support
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
   Bugfixes:
     - Improved error handling if another incompatible mod is installed.
